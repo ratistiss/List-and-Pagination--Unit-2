@@ -46,18 +46,6 @@ const showPage = (studentList, page) => {
          studentList.style.display = "none";
       }
    }
-         
-         
-         /*list[x] >= 0 && list[x] <= 9;
-         list.style.display = 'block';
-            } else {
-               list.style.display = 'none'
-                  }
-       if (list[x] >= 10 && list[x] <= 19) {
-          list.style.display = 'block';
-            } else {
-                list.style.display = 'none'
-                   }
 
 }
 /*** 
