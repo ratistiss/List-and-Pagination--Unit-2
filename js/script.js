@@ -63,15 +63,27 @@ let appendPageLinks = () => {
    let anchor = document.createElement('a');
        let pages = Math.ceil(studentList.length / 10);
          for (let x = 0; x < pages.length; x += 1){
-           li[x];
-           anchor[x];
-           anchor[x].href = "#" ;
-           anchor[x].textContent = x;
-            li.appendChild(anchor[x]);
-            ul.appendChild(li[x]);
+           li;
+           anchor;
+           anchor.href = "#" ;
+           anchor.textContent = x;
+            li.appendChild(anchor);
+            ul.appendChild(li);
      }
      
 }
+anchor.addEventListener('click', (e) => {
+
+
+
+
+});
+
+
+
+
+
+
 
 appendPageLinks(studentList);
 showPage(studentList, appendPageLinks());
