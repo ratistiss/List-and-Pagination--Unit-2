@@ -17,14 +17,8 @@ FSJS project 2 - List Filter and Pagination
 ***/
 
 let studentList = document.getElementsByClassName('student-list');
-let page = document.querySelectorAll('.page');
-const div = document.createElement("div");
-const ul = document.createElement('ul');
-div.className = 'pagination';
-document.querySelector(".page").appendChild(div);
-div.appendChild(ul);
-let li = document.createElement('li');
-let anchor = document.createElement('a');
+//let page = document.querySelectorAll('.page');
+
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
@@ -46,7 +40,7 @@ const showPage = (studentList, page) => {
    let startIndex = (page * 10) - 10;
    let endIndex = page * 10;
    for (let x = 0; x < studentList.length; x += 1);
-      if (startIndex >= studentList && studentList <= endIndex){
+      if ((x >= startIndex) && (endIndex <= x)){
          studentList.style.display = "block";
       } else{
          studentList.style.display = "none";
@@ -71,19 +65,26 @@ const showPage = (studentList, page) => {
    functionality to the pagination buttons.
 ***/
 
-const appendPageLinks = () => {
-     let pages = Math.ceil(studentList.length / 10);
-       for (let x = 0; x < pages.length; x += 1){
-         li[x] = document.createElement('li');
-         anchor[x] = document.createElement('a');
-         anchor[x].href = "#";
-         anchor[x].textContent = x;
-          li.appendChild(anchor[x]);
-          ul.appendChild(li[x]);
+let appendPageLinks = () => {
+   const div = document.createElement("div");
+   const ul = document.createElement('ul');
+   div.className = 'pagination';
+   document.querySelector(".page").appendChild(div);
+   div.appendChild(ul);
+   let li = document.createElement('li');
+   let anchor = document.createElement('a');
+       let pages = Math.ceil(studentList.length / 10);
+         for (let x = 0; x < pages.length; x += 1){
+           li[x];
+           anchor[x];
+           anchor[x].href = "#" ;
+           anchor[x].textContent = x;
+            li.appendChild(anchor[x]);
+            ul.appendChild(li[x]);
      }
      
 }
 
 appendPageLinks(studentList);
-showPage(studentList, appendPageLinks);
+showPage(studentList, appendPageLinks());
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
