@@ -75,8 +75,9 @@ let appendPageLinks = () => {
 
 
 anchor.addEventListener('click', (e) => {
+   const a = document.querySelector('a');
    for (let i = 0; i < anchor.length; i += 1){
-      
+      a.className.remove = 'active'
    }
 event.target.className = 'active';
 showPage(studentList, anchor.textContent);
