@@ -72,17 +72,17 @@ let appendPageLinks = () => {
      }
      
 }
+
+
 anchor.addEventListener('click', (e) => {
-
-
+   for (let i = 0; i < anchor.length; i += 1){
+      
+   }
+event.target.className = 'active';
+showPage(studentList, anchor.textContent);
 
 
 });
-
-
-
-
-
 
 
 appendPageLinks(studentList);
