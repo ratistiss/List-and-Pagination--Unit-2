@@ -16,50 +16,51 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 
-let studentList = document.querySelector('.student-list li');
+let studentList = document.querySelectorAll(".student-item");
 let items = 10;
 
 
 const showPage = (studentList, page) => {
    let startIndex = (page * items) - items;
    let endIndex = page * items;
-   for (let x = 0; x < studentList.length; x += 1);
+   for (let x = 0; x < studentList.length; x += 1){
       if ((x >= startIndex) && (endIndex <= x)){
          studentList.style.display = "block";
       } else{
          studentList.style.display = "none";
       }
    }
+}
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
+const div = document.createElement('div');
+const ul = document.createElement('ul');
+div.className = 'pagination';
+document.querySelector(".page").appendChild(div);
+div.appendChild(ul);
 
-let appendPageLinks = () => {
-   const div = document.createElement('div');
-   const ul = document.createElement('ul');
-   div.className = 'pagination';
-   document.querySelector(".page").appendChild(div);
-   div.appendChild(ul);
-       let pages = Math.ceil(studentList.length / items);
-         for (let x = 0; x < pages; x += 1){
-            let li = document.createElement('li');
-            let anchor = document.createElement('a');
-           anchor.href = "#" ;
-           anchor.textContent = x;
-            li.appendChild(anchor);
-            ul.appendChild(li);
-     }
+const appendPageLinks = () => {
+   const li = document.createElement('li');
+   //const anchor = document.createElement('a');
+   const pages = Math.ceil(studentList.length / items);
+   //console.log(pages);
+   for (let x = 0; x < pages; x += 1){
+      const anchor = document.createElement('a');
+      anchor.href = "#";
+      anchor.textContent = x + 1;
+      li.appendChild(anchor);
+      ul.appendChild(li);
+   }
      
-     anchor.addEventListener('click', (e) => {
-      const a = document.querySelector('a');
-       for (let i = 0; i < anchor.length; i += 1){
-        a.className.remove = 'active'
-      }
-   event.target.className = 'active';
-   showPage(studentList, anchor.textContent);
-});
-}
-
-appendPageLinks(studentList);
-showPage(studentList, appendPageLinks());
+   // anchor.addEventListener('click', (e) => {
+   //    const a = document.querySelector('a');
+   //     for (let i = 0; i < anchor.length; i += 1){
+   //      a.className.remove = 'active'
+   //    }
+   // event.target.className = 'active';
+   
+   //   });
+   }
+appendPageLinks();
