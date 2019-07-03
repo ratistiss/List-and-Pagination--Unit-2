@@ -22,12 +22,12 @@ let items = 10;
 
 const showPage = (studentList, page) => {
    let startIndex = (page * items) - items;
-   let endIndex = page * items;
+   let endIndex = (page * items);
    for (let x = 0; x < studentList.length; x += 1){
-      if ((x >= startIndex) && (endIndex <= x)){
-         studentList.style.display = "block";
-      } else{
-         studentList.style.display = "none";
+      if ((x >= startIndex) && (endIndex > x)){
+         studentList[x].style.display = "block";
+      } else {
+         studentList[x].style.display = "none";
       }
    }
 }
@@ -42,25 +42,32 @@ document.querySelector(".page").appendChild(div);
 div.appendChild(ul);
 
 const appendPageLinks = () => {
-   const li = document.createElement('li');
-   //const anchor = document.createElement('a');
-   const pages = Math.ceil(studentList.length / items);
+   //
+   const page = Math.ceil(studentList.length / items);
    //console.log(pages);
-   for (let x = 0; x < pages; x += 1){
+   for (let x = 0; x < page; x += 1){
+      const li = document.createElement('li');
       const anchor = document.createElement('a');
       anchor.href = "#";
       anchor.textContent = x + 1;
       li.appendChild(anchor);
       ul.appendChild(li);
    }
-     
-   // anchor.addEventListener('click', (e) => {
-   //    const a = document.querySelector('a');
-   //     for (let i = 0; i < anchor.length; i += 1){
-   //      a.className.remove = 'active'
-   //    }
-   // event.target.className = 'active';
    
-   //   });
-   }
-appendPageLinks();
+   showPage(studentList, 1);
+  
+
+   
+   ul.addEventListener('click', (e) => {
+      e.preventDefault();
+      const anchor = document.querySelectorAll("a");
+       for (let i = 0; i < page; i += 1){
+        anchor[i].classList.remove('active');
+      if (anchor[i].textContent === e.target.textContent) {
+         e.target.className = "active";
+         showPage(studentList, e.target.textContent);
+     }}});
+
+}
+appendPageLinks(studentList);
+
