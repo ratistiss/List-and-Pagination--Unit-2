@@ -55,3 +55,23 @@ const appendPageLinks = () => {                                                 
 }
 appendPageLinks(studentList);                                                          //calls function to html file
 
+const div2 = document.createElement('div');
+document.querySelector('.page-header').appendChild(div2);
+const input = document.createElement('input');
+input.placeholder = "Search for Students";
+const button = document.createElement('button');
+button.textContent = 'Search';
+div2.appendChild(input);
+div2.appendChild(button);
+const students = document.querySelectorAll('h3');
+
+button.addEventListener('click', (e) =>{
+   for(let x = 0; x < students.length; x += 1 )
+if (input.value == students[x].textContent){
+   studentList[x].style.display = "block";
+} else {
+   studentList[x].style.display = "none"; 
+   window.alert("That User does not Exist,Please check your spelling to make sure you typed correctly!");
+   input.value = '';
+   return;
+}})
