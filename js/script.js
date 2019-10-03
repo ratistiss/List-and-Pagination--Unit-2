@@ -67,11 +67,24 @@ const students = document.querySelectorAll('h3');
 
 button.addEventListener('click', (e) =>{
    for(let x = 0; x < students.length; x += 1 )
-if (input.value == students[x].textContent){
+if (input.value === students[x].textContent){
    studentList[x].style.display = "block";
 } else {
    studentList[x].style.display = "none"; 
-   window.alert("That User does not Exist,Please check your spelling to make sure you typed correctly!");
-   input.value = '';
-   return;
-}})
+      } 
+   // window.alert("That User does not Exist,Please check your spelling to make sure you typed correctly!");
+   // input.value = '';
+   // return;
+
+})
+
+// input.addEventListener('onkeyup', (e) => {
+//    for (let x = 0; x < students.length; x += 1)
+//       if (event.target.value == students[x].textContent) {
+//          studentList[x].style.display = "block";
+//       } else {
+//          studentList[x].style.display = "none";
+         
+//       }
+   
+// }) 
